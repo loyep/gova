@@ -12,6 +12,14 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
-vendor
+vendor/
+
+# Go build binary file
 gova
+
+# Goland
+.idea/
+.DS_Store
+
+# Docker .env file
+.env
