@@ -12,12 +12,11 @@ import (
 )
 
 func bootstrap(router *gin.Engine) {
-	router.LoadHTMLGlob("resources/views/*")
+	router.LoadHTMLGlob("views/**/*")
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{})
+		c.HTML(http.StatusOK, "home/index.html", gin.H{})
 	})
-
-	router.Static("/assets", "./resources/assets")
+	router.StaticFS("/static", http.Dir("./public/static"))
 
 	port := ":8000"
 	fmt.Printf("127.0.0.1%s\n", port)
@@ -44,6 +43,7 @@ func bootstrap(router *gin.Engine) {
 		log.Fatal("Server Shutdown:", err)
 	}
 	log.Println("Server exiting")
+
 }
 
 func main() {
